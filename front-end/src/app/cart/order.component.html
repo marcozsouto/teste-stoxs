@@ -1,0 +1,126 @@
+<section class="checkout spad">
+    <div class="container">
+        <div class="checkout__form">
+            <form action="#">
+                <div class="row" [formGroup]="form">
+                        <div class="col-lg-8 col-md-6">                
+                            <h6 class="checkout__title">Billing Details</h6>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="checkout__input">
+                                        <p>Fist Name<span>*</span></p>
+                                        <input type="text" formControlName="firstName">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="checkout__input">
+                                        <p>Last Name<span>*</span></p>
+                                        <input type="text" formControlName="lastName">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="checkout__input">
+                                <p>Country<span>*</span></p>
+                                <input type="text" formControlName="country">
+                            </div>
+                            <div class="checkout__input">
+                                <p>Address<span>*</span></p>
+                                <input type="text" placeholder="Street Address" class="checkout__input__add" formControlName="street">
+                                <input type="text" placeholder="Apartment, suite, unite ect (optinal)" formControlName="infoStreet">
+                            </div>
+                            <div class="checkout__input">
+                                <p>Town/City<span>*</span></p>
+                                <input type="text" formControlName="city">
+                            </div>
+                            <div class="checkout__input">
+                                <p>State<span>*</span></p>
+                                <input type="text" formControlName="state">
+                            </div>
+                            <div class="checkout__input">
+                                <p>Postcode / ZIP<span>*</span></p>
+                                <input type="text" formControlName="postcode">
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="checkout__input">
+                                        <p>Phone<span>*</span></p>
+                                        <input type="text" formControlName="phone">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="checkout__input">
+                                        <p>Email<span>*</span></p>
+                                        <input type="text" formControlName="email">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="checkout__input__checkbox">
+                                <label for="acc">
+                                    Create an account?
+                                    <input type="checkbox" id="acc" formControlName="checkAccount">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <p>Create an account by entering the information below. If you are a returning customer
+                                please login at the top of the page</p>
+                            </div>
+                            <div class="checkout__input">
+                                <p>Account Password<span>*</span></p>
+                                <input type="text" formControlName="password">
+                            </div>
+                            <div class="checkout__input__checkbox">
+                                <label for="diff-acc">
+                                    Note about your order, e.g, special noe for delivery
+                                    <input type="checkbox" id="diff-acc" formControlName="checkNote">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                            <div class="checkout__input">
+                                <p>Order notes<span>*</span></p>
+                                <input type="text"
+                                placeholder="Notes about your order, e.g. special notes for delivery." type="text" formControlName="notes">
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="checkout__order">
+                                <h4 class="order__title">Your order</h4>
+                                <div class="checkout__order__products">Product <span>Total</span></div>
+                                <ul class="checkout__total__products">
+                                    <li *ngFor="let product of cartProducts; let i = index">
+                                        {{i+1}}. {{product.name}}
+                                        <span>$ {{product.options.price}} </span>
+                                    </li>
+                                </ul>
+                                <ul class="checkout__total__all">
+                                    <li>Total <span>$750.99</span></li>
+                                </ul>
+                                <div class="checkout__input__checkbox">
+                                    <label for="acc-or">
+                                        Create an account?
+                                        <input type="checkbox" id="acc-or">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </div>
+                                <p>If you check this option we'll create a account for you.</p>
+                                <div class="checkout__input__checkbox">
+                                    <label for="payment">
+                                        Check Payment
+                                        <input type="checkbox" id="payment">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </div>
+                                <div class="checkout__input__checkbox">
+                                    <label for="paypal">
+                                        Paypal
+                                        <input type="checkbox" id="paypal">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </div>
+                                <button (click)="checkOut()" type="submit" class="site-btn">PLACE ORDER</button>
+                            </div>
+                            
+                        </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
