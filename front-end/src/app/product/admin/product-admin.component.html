@@ -67,15 +67,16 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-6">
-                    <label for="price">Price:<span style="color: red;">*</span></label>
-                    <br>
-                    <input type="text" id="price">
-                </div>
+
                 <div class="col-md-6">
                     <label for="code">Code:<span style="color: red;">*</span></label>
                     <br>
                     <input type="text" id="code">
+                </div>
+                <div class="col-md-6">
+                    <label for="rating">Rating(Number between 0 - 5):<span style="color: red;">*</span></label>
+                    <br>
+                    <input type="text" id="rating">
                 </div>
             </div>
 
@@ -90,15 +91,20 @@
                 </div>
             </div>
             <div class="row" *ngFor="let number of amounts; let i = index">
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <label for="rating">Name:<span style="color: red;">*</span></label>
                     <br>
                     <input type="name">
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <label for="rating">Number:<span style="color: red;">*</span></label>
                     <br>
                     <input min="1" type="number" value="1">
+                </div>
+                <div class="col-md-4">
+                    <label for="price">Price:<span style="color: red;">*</span></label>
+                    <br>
+                    <input type="text" id="price">
                 </div>
             </div>
             
@@ -106,11 +112,7 @@
             
             <h4>Last Infos</h4><br>
             <div class="row">
-                <div class="col-md-6">
-                    <label for="rating">Rating(Number between 0 - 5):<span style="color: red;">*</span></label>
-                    <br>
-                    <input type="text" id="rating">
-                </div>
+
                 <div class="col-md-6">
                     <label for="description">Description:<span style="color: red;">*</span></label>
                     <br>
