@@ -1,12 +1,10 @@
 import { StringMapWithRename } from "@angular/compiler/src/compiler_facade_interface";
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
-import { CartService } from "../cart/cart.service";
-import { CartProduct } from "../cart/CartProduct";
-import { NavBarComponent } from "../core/component/nav-bar/nav-bar.component";
-import { TodoListService } from "../services/todo-list.service";
-import { Product } from "./product";
-import { ProductService } from "./product.service";
+import { CartProduct } from "src/app/cart/CartProduct";
+import { TodoListService } from "src/app/services/todo-list.service";
+import { Product } from "../product";
+import { ProductService } from "../product.service";
 
 @Component({
     templateUrl: './product-info.component.html'

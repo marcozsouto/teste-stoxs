@@ -9,6 +9,8 @@ import { ProductModule } from './product/product.module';
 import { Error404Component } from './core/component/error-404/error-404.component';
 import { CartModule } from './cart/cart.module';
 import { StorageService } from './services/storage.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 @NgModule({
   declarations: [
@@ -18,6 +20,7 @@ import { StorageService } from './services/storage.service';
   imports: [
     BrowserModule,
     HttpClientModule,
+    ModalModule.forRoot(),
     RouterModule.forRoot([
       {
         path: '', redirectTo: 'products', pathMatch: 'full'
@@ -27,7 +30,8 @@ import { StorageService } from './services/storage.service';
     ]),
     ProductModule,
     CoreModule,
-    CartModule
+    CartModule,
+    BrowserAnimationsModule
   ],
   providers: [
     StorageService],

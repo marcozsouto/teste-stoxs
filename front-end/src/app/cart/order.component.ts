@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { FormControl, FormGroup } from "@angular/forms";
+import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
 import { TodoListService } from "../services/todo-list.service";
 import { CartProduct } from "./CartProduct";
 
@@ -13,26 +13,30 @@ export class OrderComponent {
     cartTotal: number = 0;
     form: FormGroup;
 
-    constructor(private cartService: TodoListService){
+    constructor(
+        private cartService: TodoListService,
+        private FormBuider: FormBuilder
         
-    }
+    ){}
 
     ngOnInit(): void { 
-        this.form = new FormGroup({
-            firstName: new FormControl(),
-            lastName: new FormControl(),
-            country: new FormControl(),
-            street: new FormControl(),
-            infoStreet: new FormControl(),
-            city: new FormControl(),
-            state: new FormControl(),
-            postcode: new FormControl(),
-            phone: new FormControl(),
-            email: new FormControl(),
-            checkAccount: new FormControl(),
-            password: new FormControl(),
-            checkNote: new FormControl(),
-            notes: new FormControl()
+        this.form = this.FormBuider.group({
+            firstName:      [null, [Validators.required]],
+            lastName:       [null, [Validators.required]],
+            country:        [null, [Validators.required]],
+            street:         [null, [Validators.required]],
+            infoStreet:     [null, [Validators.required]],
+            city:           [null, [Validators.required]],
+            state:          [null, [Validators.required]],
+            postcode:       [null, [Validators.required]],
+            phone:          [null, [Validators.required]],
+            email:          [null, [Validators.required]],
+            checkAccount:   [null, [Validators.required]],
+            password:       [null, [Validators.required]],
+            checkNote:      [null, [Validators.required]],
+            notes:          [null, [Validators.required]],
+            checkPayment:   [null],
+            checkPaypal:    [null],
         });
         this.getProducts();
     }
@@ -51,7 +55,9 @@ export class OrderComponent {
     }
 
     checkOut(){
-        console.log(this.form)
+        console.log(this.form.value);
+        console.log(this.form.valid);
+        this.form.reset();
     }
 
 

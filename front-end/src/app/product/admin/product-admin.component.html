@@ -1,0 +1,92 @@
+<div id="top" >
+    <div class="col-md-3">
+        <h3>Products</h3>
+        <br>
+    </div>
+ 
+    <div class="col-md-6">
+        <div class="input-group h2">
+            <input [(ngModel)]="filter" class="form-control" placeholder="Type your product Name">
+        </div>
+    </div>
+ 
+    <div class="col-md-3">
+        <button class="btn btn-dark pull-left h2" (click)="openModal()">New Product</button>
+    </div>
+</div> <!-- /#top -->
+  
+
+<div class="shopping__cart__table">
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Code</th>
+            <th>Rating</th>
+            <th>Options</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let product of filteredProducts">
+            <td><img [src]="product.imagesUrl[0]" width="40" height="40" ></td>
+            <td>{{ product.name }}</td>
+            <td>${{ product.price }}</td>
+            <td>{{ product.code }}</td>
+            <td>
+                <app-star [rating]="product.rating"></app-star>
+            </td>
+            <td>
+                <a [routerLink]="['/admin/products/info', product.id]" class="btn btn-primary mr-2">Edit</a>
+                <button (click)="deleteById(product.id)" class="btn btn-danger">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+
+</table>
+</div>
+
+
+<ng-template #template>
+    <div class="modal-body">
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <br>
+            <input type="text" id="name">
+        </div>
+        <div class="form-group">
+            <label for="price">Price:</label>
+            <br>
+            <input type="text" id="price">
+        </div>
+        <div class="form-group">
+            <label for="code">Code:</label>
+            <br>
+            <input type="text" id="code">
+        </div>
+
+        //entra options
+        <div class="form-group">
+            <label for="rating">Rating:</label>
+            <br>
+            <input type="text" id="rating">
+        </div>
+        <div class="form-group">
+            <label for="description">Description</label>
+            <br>
+            <textarea id="description" rows="3"></textarea>
+        </div>
+
+
+
+      <button type="button" class="btn btn-default" (click)="createProduct()" >Yes</button>
+      <button type="button" class="btn btn-primary" (click)="decline()" >No</button>
+    </div>
+  </ng-template>
+
+
+  name: string;
+  imagesUrl: string[];
+  code: string;
+  options: Options[];
