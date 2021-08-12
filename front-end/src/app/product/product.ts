@@ -4,12 +4,13 @@ export class Product {
     imagesUrl: string[];
     price: number;
     code: string;
-    options: Options[];
+    options: options[];
     rating: number;
     description: string;
 }
 
-type Options = {
+type options = {
     name: string;
     amount: number;
+    price: number;
 }

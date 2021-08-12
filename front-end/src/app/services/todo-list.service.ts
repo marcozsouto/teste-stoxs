@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CartProduct } from '../cart/CartProduct';
+import { Product } from '../product/product';
 
 import { StorageService } from './storage.service';
 
@@ -12,7 +12,7 @@ const defaultTodoList = [
 @Injectable()
 export class TodoListService {
     
-    products: CartProduct[] = []; 
+    products: Product[] = []; 
 
     constructor(private storageService: StorageService) {
         this.products = 
@@ -23,7 +23,7 @@ export class TodoListService {
         this.storageService.setData(todoListStorageKey, this.products);
     }
 
-    addItem(item: CartProduct) {
+    addItem(item: Product) {
         this.products.push(item);
         this.saveList();
     }

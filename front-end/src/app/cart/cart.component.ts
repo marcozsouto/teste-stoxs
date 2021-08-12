@@ -1,8 +1,6 @@
-import { Component, Injectable } from "@angular/core";
+import { Component } from "@angular/core";
 import { TodoListService } from "../services/todo-list.service";
-import { CartProduct } from "./CartProduct";
-import { Output, EventEmitter } from '@angular/core';
-import { NavBarComponent } from "../core/component/nav-bar/nav-bar.component";
+import { Product } from "../product/product";
 
 @Component({
     templateUrl: './cart.component.html'
@@ -11,7 +9,7 @@ import { NavBarComponent } from "../core/component/nav-bar/nav-bar.component";
 
 export class CartComponent {
     
-    cartProducts: CartProduct[] = [];
+    cartProducts: Product[] = [];
     cartTotal: number = 0;
     quantity: number[] = [];
 
@@ -29,17 +27,17 @@ export class CartComponent {
         this.cartTotal = 0;
         this.quantity = [];
         this.cartProducts.forEach(Element => {
-            let number = this.cartTotal + Element.options.price;
+            let number = this.cartTotal + Element.options[0].price;
             this.cartTotal = this.round(number, 2);
-            this.quantity.push(Element.options.amount);
+            this.quantity.push(Element.options[0].amount);
         });
     }
 
     amount(i: number){
 
-        this.cartProducts[i].options.amount = this.quantity[i];
+        this.cartProducts[i].options[0].amount = this.quantity[i];
         let number = this.cartProducts[i].price * this.quantity[i];
-        this.cartProducts[i].options.price = this.round(number, 2);
+        this.cartProducts[i].options[0].price = this.round(number, 2);
 
         this.update(i);
     }
@@ -63,7 +61,7 @@ export class CartComponent {
         this.cartProducts = this.cartService.getItems();
         this.cartTotal = 0;
         this.cartProducts.forEach(Element => {
-            let number = this.cartTotal + Element.options.price;
+            let number = this.cartTotal + Element.options[0].price;
             this.cartTotal = this.round(number, 2);
         });
 

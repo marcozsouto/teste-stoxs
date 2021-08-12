@@ -1,7 +1,7 @@
 import { Component } from "@angular/core";
 import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
+import { Product } from "../product/product";
 import { TodoListService } from "../services/todo-list.service";
-import { CartProduct } from "./CartProduct";
 
 @Component({
     templateUrl: './order.component.html'
@@ -9,7 +9,7 @@ import { CartProduct } from "./CartProduct";
 
 export class OrderComponent {
 
-    cartProducts: CartProduct[] = [];
+    cartProducts: Product[] = [];
     cartTotal: number = 0;
     form: FormGroup;
 
@@ -44,7 +44,7 @@ export class OrderComponent {
     getProducts() {
         this.cartProducts = this.cartService.getItems();
         this.cartProducts.forEach(Element => {
-            let number = this.cartTotal + Element.options.price;
+            let number = this.cartTotal + Element.options[0].price;
             this.cartTotal = this.round(number, 2);
         });
     }

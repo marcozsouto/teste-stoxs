@@ -43,11 +43,13 @@ var PRODUCTS: Product[] = [
         options: [
             {
                 name: 'P',
-                amount: 45
+                amount: 45,
+                price: 23
             },
             {
                 name: 'M',
-                amount: 45
+                amount: 45,
+                price: 23
             }
         ],
         rating: 4.5,
@@ -64,7 +66,8 @@ var PRODUCTS: Product[] = [
         code: "ASDAS",
         options: [{
             name: 'P',
-            amount: 45
+            amount: 45,
+            price: 23
         }],
         rating: 3.9,
         description: "string test",
@@ -80,7 +83,8 @@ var PRODUCTS: Product[] = [
         code: "DF556",
         options: [{
             name: 'P',
-            amount: 45
+            amount: 45,
+            price: 23
         }],
         rating: 4.8,
         description: "stringfiy",

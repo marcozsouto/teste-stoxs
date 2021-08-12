@@ -46,7 +46,8 @@ export class ProductAdminComponent{
             options: [
                 {
                     name: null,
-                    amount: null
+                    amount: null,
+                    price: null,
                 }
             ],
             rating: null,
@@ -55,12 +56,6 @@ export class ProductAdminComponent{
         this.thisAmount();
         this._products = this.productService.retrieveAll();
         this.filteredProducts = this._products;
-  
-        
-        type Options = {
-            name: string;
-            amount: number;
-        }
     }
 
     set filter(value: string){
@@ -91,11 +86,17 @@ export class ProductAdminComponent{
 
         let aux: Options[] = [];
         this.amounts.forEach(element => {
-            aux.push({name: null, amount:null});
+            aux.push({
+                name: null,
+                amount: null,
+                price: null,
+            });
             if(this.create.options[element].name == null){
                 
             }
         });
+
+
 
         this.create.options = aux;
         console.log(this.create);
@@ -106,4 +107,5 @@ export class ProductAdminComponent{
 type Options = {
     name: string;
     amount: number;
+    price: number;
 }

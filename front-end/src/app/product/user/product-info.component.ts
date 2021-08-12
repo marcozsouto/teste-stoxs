@@ -1,7 +1,6 @@
 import { StringMapWithRename } from "@angular/compiler/src/compiler_facade_interface";
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
-import { CartProduct } from "src/app/cart/CartProduct";
 import { TodoListService } from "src/app/services/todo-list.service";
 import { Product } from "../product";
 import { ProductService } from "../product.service";
@@ -60,17 +59,19 @@ export class ProductInfoComponent implements OnInit {
         if(this.amount <= selectedOption.amount){
             productToCart.options[0].amount = this.amount;
 
-            let productAux: CartProduct = {
+            let productAux: Product = {
                 id: productToCart.id,
                 name: productToCart.name,
-                imagesUrl: productToCart.imagesUrl[0],
+                imagesUrl: [
+                    productToCart.imagesUrl[0],
+                ],
                 price: productToCart.price,
                 code: productToCart.code,
-                options: {
+                options: [{
                     name: productToCart.options[0].name,
                     amount: productToCart.options[0].amount,
                     price: productToCart.price * productToCart.options[0].amount
-                },
+                }],
                 rating: productToCart.rating,
                 description: productToCart.description,
             };

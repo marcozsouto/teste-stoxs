@@ -87,7 +87,7 @@
                                 <ul class="checkout__total__products">
                                     <li *ngFor="let product of cartProducts; let i = index">
                                         {{i+1}}. {{product.name}}
-                                        <span>$ {{product.options.price}} </span>
+                                        <span>$ {{product.options[0].price}} </span>
                                     </li>
                                 </ul>
                                 <ul class="checkout__total__all">
