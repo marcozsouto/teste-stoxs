@@ -2,7 +2,6 @@ import { Component, ViewChild } from "@angular/core";
 import { Product } from "../product";
 import { ProductService } from "../product.service";
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
-import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 
 @Component({
     templateUrl: "./product-admin.component.html"
@@ -20,14 +19,12 @@ export class ProductAdminComponent{
     amount: number;
 
     amounts: number[] =[];
-    form: FormGroup;
-    options: FormArray;
+    create: Product;
 
     @ViewChild('template') template;
 
     constructor(private productService: ProductService, 
-                private modalService: BsModalService,
-                private FormBuider: FormBuilder          
+                private modalService: BsModalService,        
     ){}
 
 
@@ -37,21 +34,33 @@ export class ProductAdminComponent{
     
     ngOnInit(): void { 
         this.amount = 1;
+        this.create = { 
+            id: null,
+            name: null,
+            imagesUrl: [
+                null,
+                null
+            ],
+            price: null,
+            code: null,
+            options: [
+                {
+                    name: null,
+                    amount: null
+                }
+            ],
+            rating: null,
+            description: null
+        }
         this.thisAmount();
         this._products = this.productService.retrieveAll();
         this.filteredProducts = this._products;
-        this.form = this.FormBuider.group({
-            name:           [null, [Validators.required]],
-            files:          [null, [Validators.required]],
-            price:          [null, [Validators.required]],
-            code:           [null, [Validators.required]],
-            rating:         [null, [Validators.required]],
-            description:    [null, [Validators.required]],
-            options:        this.FormBuider.array([this.createOptions()])
-
-        });
-
-        this.options = this.form.get('options') as FormArray;
+  
+        
+        type Options = {
+            name: string;
+            amount: number;
+        }
     }
 
     set filter(value: string){
@@ -79,16 +88,22 @@ export class ProductAdminComponent{
 
     thisAmount(){
         this.amounts = Array.from(Array(this.amount),(x,i)=>i);
-        console.log(this.amounts);
-    }
 
-    createOptions(): FormGroup {
-        return this.FormBuider.group({
-          name: [null, Validators.compose([Validators.required])],
-          amount: [null, Validators.compose([Validators.required])]
+        let aux: Options[] = [];
+        this.amounts.forEach(element => {
+            aux.push({name: null, amount:null});
+            if(this.create.options[element].name == null){
+                
+            }
         });
+
+        this.create.options = aux;
+        console.log(this.create);
     }
 
- 
+}
 
+type Options = {
+    name: string;
+    amount: number;
 }
