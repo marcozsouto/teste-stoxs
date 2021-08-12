@@ -1,6 +1,6 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { RouterModule } from "@angular/router";
 import { ModalModule } from "ngx-bootstrap/modal";
 import { TodoListService } from "../services/todo-list.service";
@@ -19,6 +19,7 @@ import { ProductListComponent } from "./user/product-list.component";
         StarModule,
         CommonModule,
         FormsModule,
+        ReactiveFormsModule,
         ModalModule.forRoot(),
         RouterModule.forChild([
             {
